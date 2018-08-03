@@ -46,31 +46,4 @@ http.createServer(function (req, res) {
     })
 }).listen(8765)
 
-// fs.watch("./pic", function(event, filename){
-//     debug(2,event)
-//     debug(2,filename)
-//     fs.
-// })
-
-// fs.readFile("./gallery.html", function(err, data){
-//     if(err){
-//         throw err
-//     }
-//     let file_content=data.toString()
-//     let position=file_content.indexOf('<div id="insertAnchor"></div>')
-//     file_content=file_content.substring(position)
-//     let file=fs.openSync("./gallery.html", "r+")
-//     let bufferedText=new Buffer("halo"+file_content)
-//     fs.write(file, bufferedText,0,bufferedText.length,position)
-//     fs.close(file)
-// })
-
-// debug(2, position)
-
 debug(1, 'done')
-
-// 未来的目标是实现监控文件夹，添加新图片和配套文字说明后自动添加到html文件中
-// 可能要用的函数：
-// fs.watch()，用来监控
-// fs.writeFile() fs.write()，用来写html文件
-// ？？，用来解析html文件
