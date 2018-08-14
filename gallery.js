@@ -18,11 +18,14 @@ http.createServer(function (req, res) {
     debug(2, url.parse(req.url, true))
     debug(2, extensionName)
     debug(2, pathName)
-    if(pathName != "/"){
-        extensionName = pathName.match(/\.\w+$/gm)[0].slice(1)
-    }else{
+    if (pathName == "/") {
         pathName = "/gallery.html"
         extensionName = "html"
+    } else if (pathName.match(/\.\w+$/gm) == null) {
+        res.writeHead(404, { 'Content-Type': 'text/html' })
+        return res.end("404 Not Found")
+    } else {
+        extensionName = pathName.match(/\.\w+$/gm)[0].slice(1)
     }
     fs.readFile('.' + pathName, function (err, data) {
         if (err) {
@@ -36,7 +39,7 @@ http.createServer(function (req, res) {
         } else if (extensionName == 'css') {
             res.writeHead(200, { 'Content-Type': 'text/css' })
         } else if (extensionName == 'png') {
-            res.writeHead(200, { 'Content-Type': 'image/png'})
+            res.writeHead(200, { 'Content-Type': 'image/png' })
         } else {
             res.writeHead(403, { 'Content-Type': 'text/html' })
             return res.end("403 Unsupported File Type")

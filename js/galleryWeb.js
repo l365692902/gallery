@@ -21,7 +21,7 @@ function carouselSnippet(path, intro, active) {
 }
 
 $(document).ready(function () {
-    $("#album > div").load("./pic/pic.html", function (response, status, xhr) {
+    $("#album > div").load("./pic.html", function (response, status, xhr) {
         // debug(1, response)
         debug(2, status)
         // debug(1, xhr)
